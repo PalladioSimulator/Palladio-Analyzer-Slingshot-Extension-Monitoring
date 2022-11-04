@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.29">
+<file name="/home/julijan/git/palladio-analyzer-slingshot-3/bundles/org.palladiosimulator.analyzer.slingshot.monitor.processingtype.aggregator/src/org/palladiosimulator/analyzer/slingshot/monitor/processingtype/aggregator/AbstractMeasurementAggregator.java">
+<error line="1" severity="warning" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+</file>
+<file name="/home/julijan/git/palladio-analyzer-slingshot-3/bundles/org.palladiosimulator.analyzer.slingshot.monitor.processingtype.aggregator/src/org/palladiosimulator/analyzer/slingshot/monitor/processingtype/aggregator/VariableSizeMeasurementAggregator.java">
+<error line="37" severity="info" message="Line is longer than 130 characters (found 133)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="91" severity="warning" message="switch without &quot;default&quot; clause." source="com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck"/>
+</file>
+<file name="/home/julijan/git/palladio-analyzer-slingshot-3/bundles/org.palladiosimulator.analyzer.slingshot.monitor.processingtype.aggregator/src/org/palladiosimulator/analyzer/slingshot/monitor/processingtype/aggregator/MeasurementsAggregatorBehavior.java">
+<error line="15" severity="info" message="Line is longer than 130 characters (found 160)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="16" severity="info" message="Line is longer than 130 characters (found 163)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="21" severity="info" message="Line is longer than 130 characters (found 139)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="28" severity="info" message="Line is longer than 130 characters (found 148)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/julijan/git/palladio-analyzer-slingshot-3/bundles/org.palladiosimulator.analyzer.slingshot.monitor.processingtype.aggregator/src/org/palladiosimulator/analyzer/slingshot/monitor/processingtype/aggregator/FixedSizeMeasurementsAggregator.java">
+<error line="105" column="68" severity="warning" message="Inner assignments should be avoided." source="com.puppycrawl.tools.checkstyle.checks.coding.InnerAssignmentCheck"/>
+</file>
+</checkstyle>

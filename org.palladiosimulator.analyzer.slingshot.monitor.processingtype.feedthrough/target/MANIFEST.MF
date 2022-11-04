@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Slingshot ProcessingType FeedThrough Interpreter
+Bundle-SymbolicName: org.palladiosimulator.analyzer.slingshot.monitor.pr
+ ocessingtype.feedthrough;singleton:=true
+Bundle-Version: 1.0.0.202204282116
+Automatic-Module-Name: org.palladiosimulator.analyzer.slingshot.monitor.
+ processingtype.feedthrough
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.palladiosimulator.analyzer.slingshot,org.palladiosim
+ ulator.analyzer.slingshot.monitor.data,org.palladiosimulator.monitorrep
+ ository
+Bundle-License: The Apache License, Version 2.0;link="http://www.apache.
+ org/licenses/LICENSE-2.0.txt"
+
