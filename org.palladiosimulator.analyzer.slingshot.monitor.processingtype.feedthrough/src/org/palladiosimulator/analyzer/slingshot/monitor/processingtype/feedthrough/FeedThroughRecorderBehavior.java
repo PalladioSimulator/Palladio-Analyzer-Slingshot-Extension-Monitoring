@@ -13,7 +13,7 @@ import org.palladiosimulator.monitorrepository.FeedThrough;
 public class FeedThroughRecorderBehavior implements SimulationBehaviorExtension {
 
 	@Subscribe(reified = FeedThrough.class)
-	public Result onFeedThroughProcessingTypeVisited(final MonitorModelVisited<FeedThrough> feedThroughEvent) {
+	public Result<ProcessingTypeRevealed> onFeedThroughProcessingTypeVisited(final MonitorModelVisited<FeedThrough> feedThroughEvent) {
 		return Result.of(new ProcessingTypeRevealed(feedThroughEvent.getEntity(),
 				new FeedThroughRecorder(feedThroughEvent.getEntity())));
 	}

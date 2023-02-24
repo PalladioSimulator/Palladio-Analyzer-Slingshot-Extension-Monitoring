@@ -14,7 +14,6 @@ import org.palladiosimulator.analyzer.slingshot.core.api.SimulationScheduling;
 import org.palladiosimulator.analyzer.slingshot.core.extension.SimulationBehaviorExtension;
 import org.palladiosimulator.analyzer.slingshot.eventdriver.annotations.Subscribe;
 import org.palladiosimulator.analyzer.slingshot.eventdriver.annotations.eventcontract.OnEvent;
-import org.palladiosimulator.analyzer.slingshot.eventdriver.returntypes.Result;
 import org.palladiosimulator.analyzer.slingshot.monitor.data.events.CalculatorRegistered;
 import org.palladiosimulator.analyzer.slingshot.monitor.data.events.ProcessingTypeRevealed;
 import org.palladiosimulator.analyzer.slingshot.monitor.utils.SlingshotCalculatorWrapper;
@@ -36,7 +35,7 @@ import com.google.common.base.Supplier;
  * In that way, ProcessingTypes and Calculators are decoupled and can be
  * constructed on their own, and as soon as both appropriate instances are
  * available, they will be connected.
- * 
+ *
  * @author Julijan Katic
  */
 @OnEvent(when = CalculatorRegistered.class, then = {})
@@ -109,7 +108,7 @@ public class DeferredCalculatorMeasurementInitializationBehavior implements Simu
 	 * Checks whether the metric description is subsumed by the calculator's metric
 	 * description, and if so, initializes the measurement source listeners and adds
 	 * them to the calculator.
-	 * 
+	 *
 	 * @param metricDescription The metric description to check.
 	 * @param calculator        The calculator, in which the measurement source
 	 *                          listener is possibly added.
@@ -133,7 +132,7 @@ public class DeferredCalculatorMeasurementInitializationBehavior implements Simu
 	/**
 	 * Returns whether the first metric description is the same as or subsumes the
 	 * second metric description.
-	 * 
+	 *
 	 * @return true iff the first is the same as or subsumes the second metric
 	 *         description.
 	 */
@@ -150,7 +149,7 @@ public class DeferredCalculatorMeasurementInitializationBehavior implements Simu
 	 * description and the measuring point. If the metric description is a
 	 * {@link BaseMetricDescription}, then the subsumed metric descriptions are also
 	 * checked and the first calculator to be found is returned.
-	 * 
+	 *
 	 * @param metricDescription The metric description.
 	 * @param mp                The measuring point.
 	 * @return An optional calculator that matches either the exact metric

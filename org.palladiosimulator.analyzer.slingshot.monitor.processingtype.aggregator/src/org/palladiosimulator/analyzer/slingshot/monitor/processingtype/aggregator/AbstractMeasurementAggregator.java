@@ -51,7 +51,7 @@ public abstract class AbstractMeasurementAggregator extends ProcessingTypeListen
 	}
 
 	@Override
-	public final Result onMeasurementMade(final MeasurementMade measurementMade) {
+	public final Result<MeasurementUpdated> onMeasurementMade(final MeasurementMade measurementMade) {
 		if (!measurementMade.getEntity().isCompatibleWith(this.getMetricDescription())
 				&& !MetricDescriptionUtility.isBaseMetricDescriptionSubsumedByMetricDescription(
 						(BaseMetricDescription) this.getMetricDescription(),

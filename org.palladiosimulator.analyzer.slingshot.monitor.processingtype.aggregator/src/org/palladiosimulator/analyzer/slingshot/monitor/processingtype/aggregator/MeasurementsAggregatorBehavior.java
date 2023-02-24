@@ -16,13 +16,13 @@ import org.palladiosimulator.monitorrepository.VariableSizeAggregation;
 public class MeasurementsAggregatorBehavior implements SimulationBehaviorExtension {
 
 	@Subscribe(reified = FixedSizeAggregation.class)
-	public Result onFixedSizeAggregationVisited(final MonitorModelVisited<FixedSizeAggregation> fixedSizeAggregationVisited) {
+	public Result<ProcessingTypeRevealed> onFixedSizeAggregationVisited(final MonitorModelVisited<FixedSizeAggregation> fixedSizeAggregationVisited) {
 		return Result.of(new ProcessingTypeRevealed(fixedSizeAggregationVisited.getEntity(),
 				new FixedSizeMeasurementsAggregator(fixedSizeAggregationVisited.getEntity())));
 	}
 
 	@Subscribe(reified = VariableSizeAggregation.class)
-	public Result onVariableSizeAggregationVisited(final MonitorModelVisited<VariableSizeAggregation> variableSizeAggregationVisited) {
+	public Result<ProcessingTypeRevealed> onVariableSizeAggregationVisited(final MonitorModelVisited<VariableSizeAggregation> variableSizeAggregationVisited) {
 		return Result.of(new ProcessingTypeRevealed(variableSizeAggregationVisited.getEntity(),
 				new VariableSizeMeasurementAggregator(variableSizeAggregationVisited.getEntity())));
 	}

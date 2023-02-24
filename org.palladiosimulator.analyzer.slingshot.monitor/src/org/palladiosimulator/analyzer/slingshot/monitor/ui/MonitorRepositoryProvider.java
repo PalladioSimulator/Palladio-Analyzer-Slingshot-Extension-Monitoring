@@ -3,21 +3,19 @@ package org.palladiosimulator.analyzer.slingshot.monitor.ui;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.analyzer.slingshot.core.extension.ModelProvider;
 import org.palladiosimulator.analyzer.slingshot.core.extension.PCMResourceSetPartitionProvider;
-import org.palladiosimulator.analyzer.workflow.blackboard.PCMResourceSetPartition;
 import org.palladiosimulator.monitorrepository.MonitorRepository;
 import org.palladiosimulator.monitorrepository.MonitorRepositoryPackage;
 
 @Singleton
 public class MonitorRepositoryProvider implements ModelProvider<MonitorRepository> {
-	
+
 	private final PCMResourceSetPartitionProvider resourceSet;
-	
+
 	@Inject
 	public MonitorRepositoryProvider(final PCMResourceSetPartitionProvider resourceSet) {
 		this.resourceSet = resourceSet;
