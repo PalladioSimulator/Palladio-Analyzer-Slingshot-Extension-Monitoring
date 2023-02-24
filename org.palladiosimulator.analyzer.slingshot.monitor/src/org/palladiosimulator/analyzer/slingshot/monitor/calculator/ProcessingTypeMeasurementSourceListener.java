@@ -7,6 +7,7 @@ import org.palladiosimulator.analyzer.slingshot.monitor.data.entities.SlingshotM
 import org.palladiosimulator.analyzer.slingshot.monitor.data.events.MeasurementMade;
 import org.palladiosimulator.measurementframework.MeasuringValue;
 import org.palladiosimulator.measurementframework.listener.IMeasurementSourceListener;
+import org.palladiosimulator.monitorrepository.ProcessingType;
 
 /**
  * A ProcessingTypeMeasurementSourceListener is a wrapper that delegates a
@@ -28,7 +29,7 @@ import org.palladiosimulator.measurementframework.listener.IMeasurementSourceLis
  * {@link IMeasurementSourceListener}, call the delegate and simply publish the
  * returned events from
  * {@link ProcessingTypeListener#onMeasurementMade(MeasurementMade)}.
- * 
+ *
  * @author Julijan Katic
  *
  */
@@ -42,10 +43,10 @@ public final class ProcessingTypeMeasurementSourceListener implements IMeasureme
 
 	/** The scheduling which is needed to publish events from the outside. */
 	private final SimulationScheduling scheduling;
-	
+
 	/**
 	 * Constructs a ProcessingTypeMeasurementSourceListener.
-	 * 
+	 *
 	 * @param scheduling The scheduling which is needed to publish events from the
 	 *                   outside.
 	 * @param delegate   The delegate which is like a IMeasurementSourceListener in
@@ -64,11 +65,11 @@ public final class ProcessingTypeMeasurementSourceListener implements IMeasureme
 	 * publishes each event into the event system.
 	 */
 	@Override
-	public void newMeasurementAvailable(MeasuringValue newMeasurement) {
+	public void newMeasurementAvailable(final MeasuringValue newMeasurement) {
 		if (!(newMeasurement instanceof SlingshotMeasuringValue)) {
 			throw new IllegalArgumentException("MeasuringValue must carry a measuring point!");
 		}
-		
+
 		final SlingshotMeasuringValue measuringValue = (SlingshotMeasuringValue) newMeasurement;
 		this.delegate.onMeasurementMade(new MeasurementMade(measuringValue))
 			.getResultEvents()

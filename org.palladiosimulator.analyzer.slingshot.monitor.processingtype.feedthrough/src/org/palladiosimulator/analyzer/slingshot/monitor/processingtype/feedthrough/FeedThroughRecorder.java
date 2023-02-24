@@ -25,7 +25,7 @@ public final class FeedThroughRecorder extends ProcessingTypeListener {
 	}
 
 	@Override
-	public Result onMeasurementMade(final MeasurementMade measurementMade) {
+	public Result<MeasurementUpdated> onMeasurementMade(final MeasurementMade measurementMade) {
 		return Result.of(new MeasurementUpdated(
 				new MeasurementUpdateInformation(measurementMade.getEntity(), this.getProcessingType(),
 						this.getMeasuringPoint())));

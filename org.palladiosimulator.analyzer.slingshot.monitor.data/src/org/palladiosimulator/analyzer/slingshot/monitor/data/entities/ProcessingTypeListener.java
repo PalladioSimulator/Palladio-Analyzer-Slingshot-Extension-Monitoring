@@ -2,6 +2,7 @@ package org.palladiosimulator.analyzer.slingshot.monitor.data.entities;
 
 import org.palladiosimulator.analyzer.slingshot.eventdriver.returntypes.Result;
 import org.palladiosimulator.analyzer.slingshot.monitor.data.events.MeasurementMade;
+import org.palladiosimulator.analyzer.slingshot.monitor.data.events.MeasurementUpdated;
 import org.palladiosimulator.edp2.models.measuringpoint.MeasuringPoint;
 import org.palladiosimulator.metricspec.MetricDescription;
 import org.palladiosimulator.monitorrepository.ProcessingType;
@@ -25,7 +26,7 @@ public abstract class ProcessingTypeListener {
 		/* Do nothing in the standard implementation. */
 	}
 
-	public abstract Result onMeasurementMade(final MeasurementMade measurementMade);
+	public abstract Result<MeasurementUpdated> onMeasurementMade(final MeasurementMade measurementMade);
 
 	/**
 	 * @return the processingType

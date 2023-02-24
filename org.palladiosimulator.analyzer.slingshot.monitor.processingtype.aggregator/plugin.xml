@@ -3,6 +3,9 @@
 <plugin>
    <extension
          point="org.palladiosimulator.analyzer.slingshot">
+      <slingshot-extension
+            module="org.palladiosimulator.analyzer.slingshot.monitor.processingtype.aggregator.ProcessingTypeAggregationModule">
+      </slingshot-extension>
    </extension>
 
 </plugin>
