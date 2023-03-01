@@ -8,7 +8,4 @@ public class ProcessingTypeAggregationModule extends AbstractSlingshotExtension 
 	protected void configure() {
 		install(MeasurementsAggregatorBehavior.class);
 	}
-
-	
-	
 }
