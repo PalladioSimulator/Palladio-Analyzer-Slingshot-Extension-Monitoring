@@ -3,6 +3,7 @@ package org.palladiosimulator.analyzer.slingshot.monitor.calculator;
 import de.uka.ipd.sdq.simucomframework.SimuComConfig;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import org.palladiosimulator.analyzer.slingshot.monitor.observer.EventBasedMeasurementObserver;
@@ -11,7 +12,6 @@ import org.palladiosimulator.analyzer.slingshot.monitor.recorder.decorator.Recor
 import org.palladiosimulator.probeframework.calculator.ExtensibleCalculatorFactoryDelegatingFactory;
 import org.palladiosimulator.probeframework.calculator.IGenericCalculatorFactory;
 
-import com.google.inject.Provider;
 
 @Singleton
 public class CalculatorFactoryProvider implements Provider<IGenericCalculatorFactory> {

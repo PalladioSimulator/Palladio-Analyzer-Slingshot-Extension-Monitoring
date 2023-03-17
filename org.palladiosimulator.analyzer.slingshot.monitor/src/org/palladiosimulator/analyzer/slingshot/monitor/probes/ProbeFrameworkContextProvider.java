@@ -1,12 +1,12 @@
 package org.palladiosimulator.analyzer.slingshot.monitor.probes;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import org.palladiosimulator.probeframework.ProbeFrameworkContext;
 import org.palladiosimulator.probeframework.calculator.IGenericCalculatorFactory;
 
-import com.google.inject.Provider;
 
 @Singleton
 public class ProbeFrameworkContextProvider implements Provider<ProbeFrameworkContext> {
