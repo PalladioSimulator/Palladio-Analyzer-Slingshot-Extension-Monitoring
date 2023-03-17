@@ -16,15 +16,15 @@ public class MonitorModule extends AbstractSlingshotExtension {
 	protected void configure() {
 		// Behaviors
 		install(MonitorRepositoryInterpreterBehavior.class);
-		
+
 		// Launch Config & Model File
 		install(MonitorRepositoryLaunchConfig.class);
 		provideModel(MonitorRepository.class, MonitorRepositoryProvider.class);
-		
+
 		// Further objects to be provided
-		bind(IGenericCalculatorFactory.class).toProvider(CalculatorFactoryProvider.class);
-		bind(ProbeFrameworkContext.class).toProvider(ProbeFrameworkContextProvider.class);
+		provideForDelay(IGenericCalculatorFactory.class, CalculatorFactoryProvider.class);
+		provideForDelay(ProbeFrameworkContext.class, ProbeFrameworkContextProvider.class);
 	}
 
-	
+
 }
