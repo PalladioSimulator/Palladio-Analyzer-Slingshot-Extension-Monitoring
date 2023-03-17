@@ -22,8 +22,8 @@ public class MonitorModule extends AbstractSlingshotExtension {
 		provideModel(MonitorRepository.class, MonitorRepositoryProvider.class);
 
 		// Further objects to be provided
-		provideForDelay(IGenericCalculatorFactory.class, CalculatorFactoryProvider.class);
-		provideForDelay(ProbeFrameworkContext.class, ProbeFrameworkContextProvider.class);
+		install(IGenericCalculatorFactory.class, CalculatorFactoryProvider.class);
+		install(ProbeFrameworkContext.class, ProbeFrameworkContextProvider.class);
 	}
 
 
