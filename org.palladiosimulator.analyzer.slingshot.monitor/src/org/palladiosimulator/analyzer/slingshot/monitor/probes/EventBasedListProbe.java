@@ -1,12 +1,21 @@
 package org.palladiosimulator.analyzer.slingshot.monitor.probes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.measure.Measure;
+import javax.measure.quantity.Duration;
 import javax.measure.quantity.Quantity;
+import javax.measure.unit.SI;
 
 import org.palladiosimulator.analyzer.slingshot.common.events.DESEvent;
+import org.palladiosimulator.measurementframework.BasicMeasurement;
+import org.palladiosimulator.measurementframework.MeasuringValue;
+import org.palladiosimulator.measurementframework.measureprovider.MeasurementListMeasureProvider;
+import org.palladiosimulator.metricspec.BaseMetricDescription;
 import org.palladiosimulator.metricspec.MetricDescription;
+import org.palladiosimulator.metricspec.MetricSetDescription;
 import org.palladiosimulator.probeframework.measurement.ProbeMeasurement;
-import org.palladiosimulator.probeframework.probes.Probe;
 
 /**
  * A probe that is {@link DESEvent}-based. Measurements/Probes are taken when
@@ -17,10 +26,7 @@ import org.palladiosimulator.probeframework.probes.Probe;
  * @param <V> The value type of the measurement.
  * @param <Q> The quantity type of the measurement.
  */
-public abstract class EventBasedProbe<V, Q extends Quantity> extends Probe {
-
-	/** The distinguisher that is used for creating {@link RequestContext}s. */
-	private final EventDistinguisher distinguisher;
+public abstract class EventBasedListProbe<V, Q extends Quantity> extends EventBasedProbe<V, Q> {
 
 	/**
 	 * Constructs an event-based probe with
@@ -29,8 +35,17 @@ public abstract class EventBasedProbe<V, Q extends Quantity> extends Probe {
 	 * @param eventType        The event type to listen to.
 	 * @param metricDesciption A metric description needed by the super-class.
 	 */
-	protected EventBasedProbe(final MetricDescription metricDesciption) {
+	protected EventBasedListProbe(final MetricDescription metricDesciption) {
 		this(metricDesciption, EventDistinguisher.DEFAULT_DISTINGUISHER);
+
+	}
+
+	private final BaseMetricDescription getTimeMetricDescription() {
+		return (BaseMetricDescription) ((MetricSetDescription) this.getMetricDesciption()).getSubsumedMetrics().get(0);
+	}
+
+	private final BaseMetricDescription getValueMetricDescription() {
+		return (BaseMetricDescription) ((MetricSetDescription) this.getMetricDesciption()).getSubsumedMetrics().get(1);
 	}
 
 	/**
@@ -41,10 +56,9 @@ public abstract class EventBasedProbe<V, Q extends Quantity> extends Probe {
 	 * @param distinguisher    The distinguisher that is used for creating
 	 *                         {@link RequestContext}s.
 	 */
-	public EventBasedProbe(final MetricDescription metricDescription,
+	public EventBasedListProbe(final MetricDescription metricDescription,
 			final EventDistinguisher distinguisher) {
-		super(metricDescription);
-		this.distinguisher = distinguisher;
+		super(metricDescription, distinguisher);
 	}
 
 	/**
@@ -59,9 +73,14 @@ public abstract class EventBasedProbe<V, Q extends Quantity> extends Probe {
 	 *                                  returned by {@link #getEventType()}.
 	 * @see #getMeasurement(DESEvent)
 	 */
+	@Override
 	public void takeMeasurement(final DESEvent event) {
 		final ProbeMeasurement probeMeasurement = this.getProbeMeasurement(event);
 		this.notifyMeasurementSourceListener(probeMeasurement);
+	}
+
+	public Measure<Double, Duration> getTime(final DESEvent event) {
+		return Measure.valueOf(event.time(), SI.SECOND);
 	}
 
 	/**
@@ -71,18 +90,24 @@ public abstract class EventBasedProbe<V, Q extends Quantity> extends Probe {
 	 * @param event The event that happened.
 	 * @return A {@link Measure} from the event.
 	 */
+	@Override
 	public abstract Measure<V, Q> getMeasurement(final DESEvent event);
 
-	/**
-	 * TODO
-	 *
-	 * @param event
-	 * @return
-	 */
-	protected abstract ProbeMeasurement getProbeMeasurement(final DESEvent event);
+	@Override
+	protected ProbeMeasurement getProbeMeasurement(final DESEvent event) {
+		final List<MeasuringValue> list = new ArrayList<>(2);
 
-	public EventDistinguisher getDistinguisher() {
-		return this.distinguisher;
+		/* TIME */
+		final MeasuringValue pointInTimeMeasurement = new BasicMeasurement<>(this.getTime(event),
+				this.getTimeMetricDescription()).getMeasuringValueForMetric(this.getTimeMetricDescription());
+		list.add(pointInTimeMeasurement);
+		/* VALUE */
+		final MeasuringValue valueFooMeasurement = new BasicMeasurement<>(this.getMeasurement(event),
+				this.getValueMetricDescription()).getMeasuringValueForMetric(this.getValueMetricDescription());
+		list.add(valueFooMeasurement);
+
+		final MeasurementListMeasureProvider resultMeasurement = new MeasurementListMeasureProvider(list);
+		return new ProbeMeasurement(resultMeasurement, this, this.getDistinguisher().apply(event));
 	}
 
 }
