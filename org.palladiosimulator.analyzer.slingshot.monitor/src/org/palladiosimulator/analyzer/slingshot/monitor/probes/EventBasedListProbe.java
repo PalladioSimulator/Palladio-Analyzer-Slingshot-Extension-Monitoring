@@ -18,10 +18,13 @@ import org.palladiosimulator.metricspec.MetricSetDescription;
 import org.palladiosimulator.probeframework.measurement.ProbeMeasurement;
 
 /**
- * A probe that is {@link DESEvent}-based. Measurements/Probes are taken when
- * the associated {@link DESEvent} was published.
+ * A probe that is {@link DESEvent}-based and probes for a
+ * {@link MeasurementListMeasureProvider}.
  *
- * @author Julijan Katic
+ * Measurements/Probes are taken when the associated {@link DESEvent} was
+ * published.
+ *
+ * @author Sarah Stieß
  *
  * @param <V> The value type of the measurement.
  * @param <Q> The quantity type of the measurement.
@@ -32,12 +35,23 @@ public abstract class EventBasedListProbe<V, Q extends Quantity> extends EventBa
 	 * Constructs an event-based probe with
 	 * {@link EventDistinguisher#DEFAULT_DISTINGUISHER}.
 	 *
-	 * @param eventType        The event type to listen to.
 	 * @param metricDesciption A metric description needed by the super-class.
 	 */
 	protected EventBasedListProbe(final MetricDescription metricDesciption) {
-		this(metricDesciption, EventDistinguisher.DEFAULT_DISTINGUISHER);
+		super(metricDesciption);
 
+	}
+
+	/**
+	 * Constructs an event-based probe.
+	 *
+	 * @param metricDesciption A metric description needed by the super-class.
+	 * @param distinguisher    The distinguisher that is used for creating
+	 *                         {@link RequestContext}s.
+	 */
+	public EventBasedListProbe(final MetricDescription metricDescription,
+			final EventDistinguisher distinguisher) {
+		super(metricDescription, distinguisher);
 	}
 
 	private final BaseMetricDescription getTimeMetricDescription() {
@@ -48,50 +62,10 @@ public abstract class EventBasedListProbe<V, Q extends Quantity> extends EventBa
 		return (BaseMetricDescription) ((MetricSetDescription) this.getMetricDesciption()).getSubsumedMetrics().get(1);
 	}
 
-	/**
-	 * Constructs an event-based probe.
-	 *
-	 * @param eventType        The event type to listen to.
-	 * @param metricDesciption A metric description needed by the super-class.
-	 * @param distinguisher    The distinguisher that is used for creating
-	 *                         {@link RequestContext}s.
-	 */
-	public EventBasedListProbe(final MetricDescription metricDescription,
-			final EventDistinguisher distinguisher) {
-		super(metricDescription, distinguisher);
-	}
-
-	/**
-	 * Takes a measurement of the event type. The passed event must be of the given
-	 * type by {@link #getEventType()}.
-	 * <p>
-	 * This calls {@link #getMeasure(DESEvent)} and wraps it into a
-	 * {@link ProbeMeasurement} and notifies the listeners.
-	 *
-	 * @param event The event that happened and is of type {@link #getEventType()}.
-	 * @throws IllegalArgumentException if the passed event is not of the type
-	 *                                  returned by {@link #getEventType()}.
-	 * @see #getMeasurement(DESEvent)
-	 */
-	@Override
-	public void takeMeasurement(final DESEvent event) {
-		final ProbeMeasurement probeMeasurement = this.getProbeMeasurement(event);
-		this.notifyMeasurementSourceListener(probeMeasurement);
-	}
 
 	public Measure<Double, Duration> getTime(final DESEvent event) {
 		return Measure.valueOf(event.time(), SI.SECOND);
 	}
-
-	/**
-	 * An implementation that returns a {@link Measure} from a {@link DESEvent}.
-	 * That measure is needed by {@link #takeMeasurement(DESEvent)}.
-	 *
-	 * @param event The event that happened.
-	 * @return A {@link Measure} from the event.
-	 */
-	@Override
-	public abstract Measure<V, Q> getMeasurement(final DESEvent event);
 
 	@Override
 	protected ProbeMeasurement getProbeMeasurement(final DESEvent event) {
@@ -109,5 +83,4 @@ public abstract class EventBasedListProbe<V, Q extends Quantity> extends EventBa
 		final MeasurementListMeasureProvider resultMeasurement = new MeasurementListMeasureProvider(list);
 		return new ProbeMeasurement(resultMeasurement, this, this.getDistinguisher().apply(event));
 	}
-
 }

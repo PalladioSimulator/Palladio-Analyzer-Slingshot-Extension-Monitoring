@@ -65,7 +65,7 @@ public abstract class EventBasedProbe<V, Q extends Quantity> extends Probe {
 	}
 
 	/**
-	 * An implementation that returns a {@link Measure} from a {@link DESEvent}.
+	 * An implementation that returns a {@link Measure} from an {@link DESEvent}.
 	 * That measure is needed by {@link #takeMeasurement(DESEvent)}.
 	 *
 	 * @param event The event that happened.
@@ -74,10 +74,13 @@ public abstract class EventBasedProbe<V, Q extends Quantity> extends Probe {
 	public abstract Measure<V, Q> getMeasurement(final DESEvent event);
 
 	/**
-	 * TODO
+	 * Get a {@link ProbeMeasurement} from an {@link DESEvent}.
 	 *
-	 * @param event
-	 * @return
+	 * Depending on the type of probe, the measurements {@link IMeasureProvider} may
+	 * differ.
+	 *
+	 * @param event The event that happened.
+	 * @return A {@link ProbeMeasurement} from the event.
 	 */
 	protected abstract ProbeMeasurement getProbeMeasurement(final DESEvent event);
 

@@ -9,8 +9,11 @@ import org.palladiosimulator.metricspec.MetricDescription;
 import org.palladiosimulator.probeframework.measurement.ProbeMeasurement;
 
 /**
- * A probe that is {@link DESEvent}-based. Measurements/Probes are taken when
- * the associated {@link DESEvent} was published.
+ * A probe that is {@link DESEvent}-based and probes for a
+ * {@link BasicMeasurement}.
+ *
+ * Measurements/Probes are taken when the associated {@link DESEvent} was
+ * published.
  *
  * @author Julijan Katic
  *
@@ -27,7 +30,7 @@ public abstract class EventBasedBasicProbe<V, Q extends Quantity> extends EventB
 	 * @param metricDesciption A metric description needed by the super-class.
 	 */
 	protected EventBasedBasicProbe(final MetricDescription metricDesciption) {
-		this(metricDesciption, EventDistinguisher.DEFAULT_DISTINGUISHER);
+		super(metricDesciption);
 	}
 
 	/**
@@ -49,6 +52,4 @@ public abstract class EventBasedBasicProbe<V, Q extends Quantity> extends EventB
 				this.getMeasurement(event), (BaseMetricDescription) this.getMetricDesciption());
 		return new ProbeMeasurement(resultMeasurement, this, this.getDistinguisher().apply(event));
 	}
-
-
 }
