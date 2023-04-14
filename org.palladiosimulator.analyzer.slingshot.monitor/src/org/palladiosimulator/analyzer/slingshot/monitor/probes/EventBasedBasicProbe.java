@@ -26,20 +26,18 @@ public abstract class EventBasedBasicProbe<V, Q extends Quantity> extends EventB
 	 * Constructs an event-based probe with
 	 * {@link EventDistinguisher#DEFAULT_DISTINGUISHER}.
 	 *
-	 * @param eventType        The event type to listen to.
-	 * @param metricDesciption A metric description needed by the super-class.
+	 * @param metricDescription A metric description needed by the super-class.
 	 */
-	protected EventBasedBasicProbe(final MetricDescription metricDesciption) {
-		super(metricDesciption);
+	protected EventBasedBasicProbe(final MetricDescription metricDescription) {
+		super(metricDescription);
 	}
 
 	/**
 	 * Constructs an event-based probe.
 	 *
-	 * @param eventType        The event type to listen to.
-	 * @param metricDesciption A metric description needed by the super-class.
-	 * @param distinguisher    The distinguisher that is used for creating
-	 *                         {@link RequestContext}s.
+	 * @param metricDescription A metric description needed by the super-class.
+	 * @param distinguisher     The distinguisher that is used for creating
+	 *                          {@link RequestContext}s.
 	 */
 	public EventBasedBasicProbe(final MetricDescription metricDescription,
 			final EventDistinguisher distinguisher) {

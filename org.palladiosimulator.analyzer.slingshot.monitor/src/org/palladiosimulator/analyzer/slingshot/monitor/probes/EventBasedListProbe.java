@@ -24,6 +24,8 @@ import org.palladiosimulator.probeframework.measurement.ProbeMeasurement;
  * Measurements/Probes are taken when the associated {@link DESEvent} was
  * published.
  *
+ * Beware: This probe requires a {@link MetricSetDescription}.
+ *
  * @author Sarah Stieß
  *
  * @param <V> The value type of the measurement.
@@ -35,19 +37,24 @@ public abstract class EventBasedListProbe<V, Q extends Quantity> extends EventBa
 	 * Constructs an event-based probe with
 	 * {@link EventDistinguisher#DEFAULT_DISTINGUISHER}.
 	 *
-	 * @param metricDesciption A metric description needed by the super-class.
+	 * @param metricDescription A metric description needed by the super-class.
 	 */
-	protected EventBasedListProbe(final MetricDescription metricDesciption) {
-		super(metricDesciption);
+	protected EventBasedListProbe(final MetricDescription metricDescription) {
+		super(metricDescription);
 
+		if (!(metricDescription instanceof MetricSetDescription)) {
+			throw new IllegalArgumentException(String.format(
+					"Illegal Metric Decription for Unary Calculator. Got %s %s but require a MetricSetDescription.",
+					metricDescription.getClass().getSimpleName(), metricDescription.getName()));
+		}
 	}
 
 	/**
 	 * Constructs an event-based probe.
 	 *
-	 * @param metricDesciption A metric description needed by the super-class.
-	 * @param distinguisher    The distinguisher that is used for creating
-	 *                         {@link RequestContext}s.
+	 * @param metricDescription A metric description needed by the super-class.
+	 * @param distinguisher     The distinguisher that is used for creating
+	 *                          {@link RequestContext}s.
 	 */
 	public EventBasedListProbe(final MetricDescription metricDescription,
 			final EventDistinguisher distinguisher) {
@@ -61,7 +68,6 @@ public abstract class EventBasedListProbe<V, Q extends Quantity> extends EventBa
 	private final BaseMetricDescription getValueMetricDescription() {
 		return (BaseMetricDescription) ((MetricSetDescription) this.getMetricDesciption()).getSubsumedMetrics().get(1);
 	}
-
 
 	public Measure<Double, Duration> getTime(final DESEvent event) {
 		return Measure.valueOf(event.time(), SI.SECOND);

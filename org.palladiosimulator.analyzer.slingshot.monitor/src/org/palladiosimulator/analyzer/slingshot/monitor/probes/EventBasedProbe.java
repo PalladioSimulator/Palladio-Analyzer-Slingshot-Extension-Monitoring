@@ -27,19 +27,19 @@ public abstract class EventBasedProbe<V, Q extends Quantity> extends Probe {
 	 * {@link EventDistinguisher#DEFAULT_DISTINGUISHER}.
 	 *
 	 * @param eventType        The event type to listen to.
-	 * @param metricDesciption A metric description needed by the super-class.
+	 * @param metricDescription A metric description needed by the super-class.
 	 */
-	protected EventBasedProbe(final MetricDescription metricDesciption) {
-		this(metricDesciption, EventDistinguisher.DEFAULT_DISTINGUISHER);
+	protected EventBasedProbe(final MetricDescription metricDescription) {
+		this(metricDescription, EventDistinguisher.DEFAULT_DISTINGUISHER);
 	}
 
 	/**
 	 * Constructs an event-based probe.
 	 *
-	 * @param eventType        The event type to listen to.
-	 * @param metricDesciption A metric description needed by the super-class.
-	 * @param distinguisher    The distinguisher that is used for creating
-	 *                         {@link RequestContext}s.
+	 * @param eventType         The event type to listen to.
+	 * @param metricDescription A metric description needed by the super-class.
+	 * @param distinguisher     The distinguisher that is used for creating
+	 *                          {@link RequestContext}s.
 	 */
 	public EventBasedProbe(final MetricDescription metricDescription,
 			final EventDistinguisher distinguisher) {
