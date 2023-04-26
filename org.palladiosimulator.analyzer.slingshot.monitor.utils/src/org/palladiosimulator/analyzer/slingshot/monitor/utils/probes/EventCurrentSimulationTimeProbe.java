@@ -5,7 +5,7 @@ import javax.measure.quantity.Duration;
 import javax.measure.unit.SI;
 
 import org.palladiosimulator.analyzer.slingshot.common.events.DESEvent;
-import org.palladiosimulator.analyzer.slingshot.monitor.probes.EventBasedProbe;
+import org.palladiosimulator.analyzer.slingshot.monitor.probes.EventBasedBasicProbe;
 import org.palladiosimulator.analyzer.slingshot.monitor.probes.EventDistinguisher;
 import org.palladiosimulator.metricspec.constants.MetricDescriptionConstants;
 
@@ -13,15 +13,13 @@ import org.palladiosimulator.metricspec.constants.MetricDescriptionConstants;
  * A standard implementation of a {@link DESEvent}-based probe that takes the
  * current simulation time. The MetricDescription is
  * {@link MetricDescriptionConstants#POINT_IN_TIME_METRIC}.
- * 
+ *
  * @author Julijan Katic
  */
-public final class EventCurrentSimulationTimeProbe extends EventBasedProbe<Double, Duration> {
+public final class EventCurrentSimulationTimeProbe extends EventBasedBasicProbe<Double, Duration> {
 
 	/**
 	 * Constructs a EventCurrentSimulationTimeProbe.
-	 * 
-	 * @param eventType The type of the event.
 	 */
 	public EventCurrentSimulationTimeProbe() {
 		super(MetricDescriptionConstants.POINT_IN_TIME_METRIC);
@@ -29,8 +27,7 @@ public final class EventCurrentSimulationTimeProbe extends EventBasedProbe<Doubl
 
 	/**
 	 * Constructs an EventCurrentSimulationTimeProbe with a custom distinguisher.
-	 * 
-	 * @param eventType     The type of the event.
+	 *
 	 * @param distinguisher The distinguisher that instantiates a
 	 *                      {@link RequestContext}.
 	 */
@@ -44,5 +41,5 @@ public final class EventCurrentSimulationTimeProbe extends EventBasedProbe<Doubl
 		return Measure.valueOf(event.time(), SI.SECOND);
 	}
 
-	
+
 }
