@@ -82,9 +82,9 @@ public abstract class EventBasedListProbe<V, Q extends Quantity> extends EventBa
 				this.getTimeMetricDescription()).getMeasuringValueForMetric(this.getTimeMetricDescription());
 		list.add(pointInTimeMeasurement);
 		/* VALUE */
-		final MeasuringValue valueFooMeasurement = new BasicMeasurement<>(this.getMeasurement(event),
+		final MeasuringValue valueMeasurement = new BasicMeasurement<>(this.getMeasurement(event),
 				this.getValueMetricDescription()).getMeasuringValueForMetric(this.getValueMetricDescription());
-		list.add(valueFooMeasurement);
+		list.add(valueMeasurement);
 
 		final MeasurementListMeasureProvider resultMeasurement = new MeasurementListMeasureProvider(list);
 		return new ProbeMeasurement(resultMeasurement, this, this.getDistinguisher().apply(event));
