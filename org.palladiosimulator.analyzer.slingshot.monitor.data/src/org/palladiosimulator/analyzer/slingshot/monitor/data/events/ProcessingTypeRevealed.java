@@ -1,12 +1,12 @@
 package org.palladiosimulator.analyzer.slingshot.monitor.data.events;
 
-import org.palladiosimulator.analyzer.slingshot.common.events.AbstractEvent;
+import org.palladiosimulator.analyzer.slingshot.common.events.AbstractSimulationEvent;
 import org.palladiosimulator.analyzer.slingshot.monitor.data.entities.ProcessingTypeListener;
 import org.palladiosimulator.edp2.models.measuringpoint.MeasuringPoint;
 import org.palladiosimulator.metricspec.MetricDescription;
 import org.palladiosimulator.monitorrepository.ProcessingType;
 
-public final class ProcessingTypeRevealed extends AbstractEvent {
+public final class ProcessingTypeRevealed extends AbstractSimulationEvent {
 
 	private final ProcessingType processingType;
 	private final MetricDescription metricDescription;
