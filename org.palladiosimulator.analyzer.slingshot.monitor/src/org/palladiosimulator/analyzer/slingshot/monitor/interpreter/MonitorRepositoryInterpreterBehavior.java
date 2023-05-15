@@ -2,6 +2,7 @@ package org.palladiosimulator.analyzer.slingshot.monitor.interpreter;
 
 import javax.inject.Inject;
 
+import org.palladiosimulator.analyzer.slingshot.common.annotations.Nullable;
 import org.palladiosimulator.analyzer.slingshot.core.events.PreSimulationConfigurationStarted;
 import org.palladiosimulator.analyzer.slingshot.core.extension.SimulationBehaviorExtension;
 import org.palladiosimulator.analyzer.slingshot.eventdriver.annotations.Subscribe;
@@ -18,10 +19,15 @@ public class MonitorRepositoryInterpreterBehavior implements SimulationBehaviorE
 	private final MonitorRepository monitorRepository;
 
 	@Inject
-	public MonitorRepositoryInterpreterBehavior(final MonitorRepository monitorRepository) {
+	public MonitorRepositoryInterpreterBehavior(@Nullable final MonitorRepository monitorRepository) {
 		this.monitorRepository = monitorRepository;
 	}
 
+	@Override
+	public boolean isActive() {
+		return this.monitorRepository != null;
+	}
+	
 	@Subscribe
 	public Result<MonitoringEvent> onPreSimulationConfigurationStarted(final PreSimulationConfigurationStarted event) {
 		final MonitorModelVisitor visitor = new MonitorModelVisitor();
