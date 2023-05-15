@@ -15,12 +15,12 @@ import org.palladiosimulator.analyzer.slingshot.monitor.data.events.MonitoringEv
  * between the different event handlers which listen to
  * {@code MonitorModelVisited}, but on a different {@code <MonitorModel>}, the
  * {@link Reified} annotation must be given, for example:
- * 
+ *
  * {@code public ResultEvent<?> onCustomProcessingType(@Reified(CustomProcessingType.class) final MonitorModelVisited<CustomProcessingType> type)}.
- * 
+ *
  * The reason for this is that generic types are erased during run-time, and the
  * information must be given back (in this case, by using an annotation).
- * 
+ *
  * @author Julijan Katic
  *
  * @param <MonitorModel> The monitoring model that has be
@@ -29,7 +29,7 @@ public class MonitorModelVisited<MonitorModel extends EObject> extends ModelVisi
 		implements MonitoringEvent {
 
 	public MonitorModelVisited(final MonitorModel entity) {
-		super(entity);
+		super((Class<MonitorModel>) entity.getClass(), entity, 0.0);
 	}
 
 }

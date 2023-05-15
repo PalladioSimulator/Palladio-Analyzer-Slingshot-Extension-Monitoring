@@ -86,7 +86,7 @@ public class DeferredCalculatorMeasurementInitializationBehavior implements Simu
 	}
 
 	@Subscribe
-	public void onNewProcessingTypeAvailable(final ProcessingTypeRevealed processingTypeRevealed) {
+	public void onProcessingTypeRevealed(final ProcessingTypeRevealed processingTypeRevealed) {
 		final Optional<Calculator> baseCalculator = this.getBaseCalculator(
 				processingTypeRevealed.getMetricDescription(), processingTypeRevealed.getMeasuringPoint());
 		if (baseCalculator.isPresent()) {

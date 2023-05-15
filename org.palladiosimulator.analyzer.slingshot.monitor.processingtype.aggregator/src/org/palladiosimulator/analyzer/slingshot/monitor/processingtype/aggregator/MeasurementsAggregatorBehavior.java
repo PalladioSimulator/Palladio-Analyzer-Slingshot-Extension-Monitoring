@@ -12,7 +12,6 @@ import org.palladiosimulator.monitorrepository.VariableSizeAggregation;
 
 
 @OnEvent(when = MonitorModelVisited.class, then = ProcessingTypeRevealed.class, cardinality = EventCardinality.SINGLE)
-@OnEvent(when = MonitorModelVisited.class, then = ProcessingTypeRevealed.class, cardinality = EventCardinality.SINGLE)
 public class MeasurementsAggregatorBehavior implements SimulationBehaviorExtension {
 
 	@Subscribe(reified = FixedSizeAggregation.class)
