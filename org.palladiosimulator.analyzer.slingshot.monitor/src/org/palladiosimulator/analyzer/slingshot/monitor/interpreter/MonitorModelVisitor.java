@@ -27,6 +27,10 @@ public class MonitorModelVisitor extends MonitorRepositorySwitch<Set<MonitoringE
 
 	@Override
 	public Set<MonitoringEvent> caseMonitor(final Monitor object) {
+		if (!object.isActivated()) {
+			return Set.of();
+		}
+
 		final int numberMeasurementSpecs = object.getMeasurementSpecifications().size();
 
 		final Set<MonitoringEvent> result = new HashSet<>(numberMeasurementSpecs);
