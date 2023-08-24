@@ -77,7 +77,7 @@ public abstract class EventBasedListProbe<V, Q extends Quantity> extends EventBa
 
 		} else {
 			throw new IllegalArgumentException(
-					String.format("Expected MetricSetDescription with at leas one point in time metrib, but got %s.",
+					String.format("Expected MetricSetDescription with at least one point in time metric, but got %s.",
 							metricDescription.getName()));
 		}
 	}
