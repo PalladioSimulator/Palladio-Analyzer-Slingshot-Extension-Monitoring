@@ -35,8 +35,8 @@ import org.palladiosimulator.probeframework.measurement.ProbeMeasurement;
  */
 public abstract class EventBasedListProbe<V, Q extends Quantity> extends EventBasedProbe<V, Q> {
 
-	Function<DESEvent, MeasuringValue> firstvalue;
-	Function<DESEvent, MeasuringValue> secondvalue;
+	private final Function<DESEvent, MeasuringValue> firstvalue;
+	private final Function<DESEvent, MeasuringValue> secondvalue;
 
 	/**
 	 * Constructs an event-based probe with
