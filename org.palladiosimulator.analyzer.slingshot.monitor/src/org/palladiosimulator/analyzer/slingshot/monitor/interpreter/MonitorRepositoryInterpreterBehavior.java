@@ -1,7 +1,13 @@
 package org.palladiosimulator.analyzer.slingshot.monitor.interpreter;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import javax.inject.Inject;
 
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.analyzer.slingshot.behavior.spd.data.ModelAdjusted;
+import org.palladiosimulator.analyzer.slingshot.behavior.spd.data.adjustment.MonitorChange;
 import org.palladiosimulator.analyzer.slingshot.common.annotations.Nullable;
 import org.palladiosimulator.analyzer.slingshot.core.events.PreSimulationConfigurationStarted;
 import org.palladiosimulator.analyzer.slingshot.core.extension.SimulationBehaviorExtension;
@@ -14,6 +20,7 @@ import org.palladiosimulator.analyzer.slingshot.monitor.data.events.modelvisited
 import org.palladiosimulator.monitorrepository.MonitorRepository;
 
 @OnEvent(when = PreSimulationConfigurationStarted.class, then = { MonitorModelVisited.class }, cardinality = EventCardinality.MANY)
+@OnEvent(when = ModelAdjusted.class, then = { MonitorModelVisited.class }, cardinality = EventCardinality.MANY)
 public class MonitorRepositoryInterpreterBehavior implements SimulationBehaviorExtension {
 
 	private final MonitorRepository monitorRepository;
@@ -25,13 +32,28 @@ public class MonitorRepositoryInterpreterBehavior implements SimulationBehaviorE
 
 	@Override
 	public boolean isActive() {
-		return this.monitorRepository != null;
+		return this.monitorRepository != null && !this.monitorRepository.getMonitors().isEmpty();
 	}
 	
 	@Subscribe
 	public Result<MonitoringEvent> onPreSimulationConfigurationStarted(final PreSimulationConfigurationStarted event) {
+		return Result.of(this.interpreteMonitorModel(monitorRepository));
+	}
+
+	@Subscribe
+	public Result<MonitoringEvent> onModelAdjusted(final ModelAdjusted modelAdjusted) {
+		final Set<MonitoringEvent> result =	modelAdjusted.getChanges().stream()
+				.filter(MonitorChange.class::isInstance)
+				.map(MonitorChange.class::cast)
+				.flatMap(monitorChange -> this.interpreteMonitorModel(monitorChange.getNewMonitor()).stream())
+				.collect(Collectors.toSet());
+
+		return Result.of(result);
+	}
+
+	private Set<MonitoringEvent> interpreteMonitorModel(final EObject modelElement) {
 		final MonitorModelVisitor visitor = new MonitorModelVisitor();
-		return Result.from(visitor.doSwitch(monitorRepository));
+		return visitor.doSwitch(modelElement);
 	}
 
 }
