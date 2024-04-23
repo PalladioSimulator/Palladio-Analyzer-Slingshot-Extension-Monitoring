@@ -8,10 +8,7 @@ Export-Package: org.palladiosimulator.analyzer.slingshot.monitor.data.entities,
  org.palladiosimulator.analyzer.slingshot.monitor.data.events.modelvisited
 Require-Bundle: org.palladiosimulator.measurementframework;visibility:=reexport,
  org.palladiosimulator.probeframework,
- org.palladiosimulator.edp2,
- org.palladiosimulator.pcm,
  org.palladiosimulator.monitorrepository,
- org.palladiosimulator.analyzer.slingshot.core;bundle-version="1.0.0",
- org.palladiosimulator.analyzer.slingshot.common.utils
+ org.palladiosimulator.analyzer.slingshot.core;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: org.palladiosimulator.analyzer.slingshot.monitor.data
