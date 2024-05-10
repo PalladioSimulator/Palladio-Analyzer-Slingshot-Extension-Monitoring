@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<checkstyle version="8.29">
-<file name="/home/julijan/git/palladio-analyzer-slingshot-3/bundles/org.palladiosimulator.analyzer.slingshot.monitor.processingtype.feedthrough/src/org/palladiosimulator/analyzer/slingshot/monitor/processingtype/feedthrough/FeedThroughRecorderBehavior.java">
-<error line="1" severity="warning" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
-<error line="14" severity="info" message="Line is longer than 130 characters (found 151)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
-</file>
-<file name="/home/julijan/git/palladio-analyzer-slingshot-3/bundles/org.palladiosimulator.analyzer.slingshot.monitor.processingtype.feedthrough/src/org/palladiosimulator/analyzer/slingshot/monitor/processingtype/feedthrough/FeedThroughRecorder.java">
-</file>
-</checkstyle>
