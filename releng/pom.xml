@@ -3,15 +3,15 @@
 		
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>monitoring-slingshot</groupId>
-		<artifactId>parent</artifactId>	
-		<version>0.1.0-SNAPSHOT</version>
+		<groupId>org.palladiosimulator.analyzer.slingshot</groupId>
+		<artifactId>monitoring-slingshot</artifactId>	
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>releng</artifactId>	
 	<packaging>pom</packaging>
 	
 	<modules>
-		<module>monitoring-slingshot.updatesite</module>
+		<module>org.palladiosimulator.analyzer.slingshot.monitor.updatesite</module>
 	</modules>
 	
 </project>

@@ -3,9 +3,9 @@
 		
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>monitoring-slingshot</groupId>
-		<artifactId>parent</artifactId>	
-		<version>0.1.0-SNAPSHOT</version>
+		<groupId>org.palladiosimulator.analyzer.slingshot</groupId>
+		<artifactId>monitoring-slingshot</artifactId>	
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>features</artifactId>	
 	<packaging>pom</packaging>

@@ -2,13 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+
 	<parent>
-		<groupId>monitoring-slingshot</groupId>
+		<groupId>org.palladiosimulator.analyzer.slingshot</groupId>
 		<artifactId>releng</artifactId>
-		<version>0.1.0-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>monitoring-slingshot.updatesite</artifactId>
+	<artifactId>org.palladiosimulator.analyzer.slingshot.monitor.updatesite</artifactId>
 	<packaging>eclipse-repository</packaging>
 
 </project>
