@@ -16,6 +16,5 @@ Require-Bundle: org.palladiosimulator.analyzer.slingshot.core;bundle-version="1.
  org.palladiosimulator.analyzer.slingshot.monitor.data;bundle-version="1.0.0",
  org.palladiosimulator.edp2.util,
  de.uka.ipd.sdq.simucomframework,
- org.palladiosimulator.analyzer.slingshot.behavior.spd.data,
  org.palladiosimulator.pcm.edp2.measuringpoint
 Export-Package: org.palladiosimulator.analyzer.slingshot.monitor.probes
