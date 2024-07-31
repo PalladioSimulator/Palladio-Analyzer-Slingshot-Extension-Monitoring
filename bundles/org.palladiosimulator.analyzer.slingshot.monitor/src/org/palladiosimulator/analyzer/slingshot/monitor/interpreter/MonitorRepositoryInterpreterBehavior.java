@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EObject;
-import org.palladiosimulator.analyzer.slingshot.behavior.spd.data.ModelAdjusted;
-import org.palladiosimulator.analyzer.slingshot.behavior.spd.data.adjustment.MonitorChange;
 import org.palladiosimulator.analyzer.slingshot.common.annotations.Nullable;
+import org.palladiosimulator.analyzer.slingshot.common.events.modelchanges.ModelAdjusted;
+import org.palladiosimulator.analyzer.slingshot.common.events.modelchanges.MonitorChange;
 import org.palladiosimulator.analyzer.slingshot.core.events.PreSimulationConfigurationStarted;
 import org.palladiosimulator.analyzer.slingshot.core.extension.SimulationBehaviorExtension;
 import org.palladiosimulator.analyzer.slingshot.eventdriver.annotations.Subscribe;
