@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.palladiosimulator.slingshot.extension.monitoring.feature"
+      id="org.palladiosimulator.analyzer.slingshot.extension.monitoring.feature"
       label="Slingshot Extension Monitoring"
       version="1.0.0.qualifier">
 
