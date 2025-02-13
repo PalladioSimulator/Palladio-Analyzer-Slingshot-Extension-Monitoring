@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="monitoring-slingshot Target Platform" sequenceNumber="1">
+<?pde version="3.8"?>
+<target name="monitoring-slingshot Target Platform" sequenceNumber="1">
 <locations>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 		<repository location="https://updatesite.palladio-simulator.com/palladio-build-updatesite/releases/5.1.0/"/>
@@ -244,6 +245,11 @@
 		<unit id="org.junit.source" version="4.13.2.v20211018-1956"/>
 		<unit id="org.junit.vintage.engine" version="5.8.1.v20211018-1956"/>
 		<unit id="org.junit.vintage.engine.source" version="5.8.1.v20211018-1956"/>
+	</location>
+	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<repository location="https://updatesite.palladio-simulator.com/palladio-analyzer-slingshot/nightly/"/>
+		<unit id="org.palladiosimulator.analyzer.slingshot.feature.feature.group" version="1.0.0.202502121531"/>
+		<unit id="org.palladiosimulator.analyzer.slingshot.ui.feature.feature.group" version="1.0.0.202502121531"/>
 	</location>
 </locations>
 </target>
