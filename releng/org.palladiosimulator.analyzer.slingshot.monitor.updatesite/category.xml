@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature id="org.palladiosimulator.slingshot.extension.monitoring.feature">
+   <feature id="org.palladiosimulator.analyzer.slingshot.extension.monitoring.feature">
       <category name="org.palladiosimulator.addons.category"/>
    </feature>
    <category-def name="org.palladiosimulator.addons.category" label="Palladio Bench Addons">
