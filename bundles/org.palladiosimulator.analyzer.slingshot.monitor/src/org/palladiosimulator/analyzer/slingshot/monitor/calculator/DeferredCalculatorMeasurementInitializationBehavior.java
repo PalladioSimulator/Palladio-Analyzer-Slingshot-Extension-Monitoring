@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Supplier;
 
 import javax.inject.Inject;
 
@@ -24,8 +25,6 @@ import org.palladiosimulator.metricspec.BaseMetricDescription;
 import org.palladiosimulator.metricspec.MetricDescription;
 import org.palladiosimulator.probeframework.calculator.Calculator;
 import org.palladiosimulator.probeframework.calculator.IObservableCalculatorRegistry;
-
-import com.google.common.base.Supplier;
 
 /**
  * A simulation behavior that will lazily add measurement source listeners to

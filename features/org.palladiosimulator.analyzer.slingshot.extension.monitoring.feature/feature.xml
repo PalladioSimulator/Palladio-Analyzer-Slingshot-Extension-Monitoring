@@ -24,9 +24,10 @@
       <import plugin="org.palladiosimulator.analyzer.workflow"/>
       <import plugin="de.uka.ipd.sdq.workflow.mdsd.blackboard"/>
       <import plugin="org.palladiosimulator.probeframework"/>
-      <import plugin="org.palladiosimulator.recorderframework"/>
+      <import plugin="org.palladiosimulator.recorderframework.core"/>
       <import plugin="org.palladiosimulator.edp2.util"/>
-      <import plugin="de.uka.ipd.sdq.simucomframework"/>
+      <import plugin="de.uka.ipd.sdq.simucomframework.core"/>
+      <import plugin="de.uka.ipd.sdq.simulation.core"/>
       <import plugin="org.palladiosimulator.pcm.edp2.measuringpoint"/>
       <import plugin="org.palladiosimulator.measurementframework"/>
       <import plugin="org.palladiosimulator.analyzer.slingshot.common"/>
