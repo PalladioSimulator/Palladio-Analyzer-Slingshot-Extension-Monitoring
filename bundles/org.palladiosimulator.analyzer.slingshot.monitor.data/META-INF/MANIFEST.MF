@@ -10,5 +10,5 @@ Require-Bundle: org.palladiosimulator.measurementframework;visibility:=reexport,
  org.palladiosimulator.probeframework,
  org.palladiosimulator.monitorrepository,
  org.palladiosimulator.analyzer.slingshot.core
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Automatic-Module-Name: org.palladiosimulator.analyzer.slingshot.monitor.data
